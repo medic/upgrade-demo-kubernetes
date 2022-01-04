@@ -1,0 +1,32 @@
+{
+    "CHT v4.0": [
+        {
+            "containerName": "upgrade-demo",
+            "imageTag": "0.1"
+        },
+        {
+            "containerName": "upgrade-service",
+            "imageTag": "0.17"
+        }
+    ],
+    "CHT v4.1": [
+        {
+            "containerName": "upgrade-demo",
+            "imageTag": "0.2"
+        },
+        {
+            "containerName": "upgrade-service",
+            "imageTag": "0.18"
+        }
+    ],
+    "CHT v4.2": [
+        {
+            "containerName": "upgrade-demo",
+            "imageTag": "0.3"
+        },
+        {
+            "containerName": "upgrade-service",
+            "imageTag": "0.19"
+        }
+    ]
+}

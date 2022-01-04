@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: upgrade-demo
+  name: upgrade-demo
+  namespace: k8s-cht-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: upgrade-demo
+  template:
+    metadata:
+      labels:
+        app: upgrade-demo
+    spec:
+      containers:
+      - image: medicmobile/upgrade-demo:0.1
+        name: upgrade-demo
