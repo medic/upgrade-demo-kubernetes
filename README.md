@@ -1,6 +1,10 @@
 # Kubernetes Upgrade Demo - Self Upgrading Deployment
 
 This angular application demonstrates how to use the kubernetes upgrade service () to expose a UI to end users that they can use to upgrade pods without the need to use tools like `kubectl`.
+
+![image](https://user-images.githubusercontent.com/3198821/148093274-6ab5e249-a11e-45b2-8ac3-054a62fe02aa.png)
+
+
 ## Prerequisites
 
 To get this working, you also have to deploy the upgrade-service-kubernetes repo to a kubernetes cluster. It can be found here: https://github.com/medic/upgrade-service-kubernetes.
