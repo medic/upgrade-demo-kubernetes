@@ -1,13 +1,13 @@
 {
   "name": "upgrade-demo",
-  "version": "CHT v4.2",
+  "version": "CHT v4.3",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
-    "build-docker-image": "docker build . -t medicmobile/upgrade-demo:0.3"
+    "build-docker-image": "docker build . -t medicmobile/upgrade-demo:0.9"
   },
   "private": true,
   "dependencies": {

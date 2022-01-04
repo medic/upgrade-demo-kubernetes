@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { IUpgradeMessage } from './upgrade-message';
 import { HttpClient } from '@angular/common/http';
-
+import completeListOfVersions from './upgrades/upgrade-specification.json';
 @Injectable({
   providedIn: 'root'
 })
@@ -11,16 +11,22 @@ export class UpgradeCommandService {
   constructor(private http: HttpClient) { 
   }
 
-  constructUpgradeArray = (imageTag: string) : Array<IUpgradeMessage> => {
-    const upgradeJSON = {containerName: 'upgrade-demo', imageTag: imageTag};
-    const upgradeMessage: IUpgradeMessage = upgradeJSON;
-    let upgradeArr: Array<IUpgradeMessage> = [];
-    upgradeArr.push(upgradeMessage);
-    return upgradeArr;
+  typedKeys<T>(o: T): (keyof T)[] {
+    return Object.keys(o) as (keyof T)[];
   }
 
-  upgradeImages(imageTag: string): Observable<string> {
-    const upgradeArray = this.constructUpgradeArray(imageTag);
+  constructUpgradeArray = (versionTag: string) : Array<IUpgradeMessage> => {
+    let upgradeJSON: IUpgradeMessage[] = [];
+    this.typedKeys(completeListOfVersions).forEach(k => {
+      if(k == versionTag) {
+        upgradeJSON = completeListOfVersions[k];
+      }
+    });
+    return upgradeJSON;
+  }
+
+  upgradeImages(versionTag: string): Observable<string> {
+    const upgradeArray = this.constructUpgradeArray(versionTag);
     return this.http.post<string>(this.upgradeURL, upgradeArray);
   }
 
