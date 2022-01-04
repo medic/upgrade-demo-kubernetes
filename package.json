@@ -1,6 +1,6 @@
 {
   "name": "upgrade-demo",
-  "version": "CHT v4.2",
+  "version": "CHT v4.3",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
