@@ -25,7 +25,7 @@ export class UpgradesComponent implements OnInit {
   }
 
   async ngOnInit(): Promise<void> {
-    this.deploymentReadyForUpgrade = await this.checkReadiness();
+    await this.checkReadiness();
   }
 
   upgradeVersion(versionTag: string): void {
@@ -45,7 +45,7 @@ export class UpgradesComponent implements OnInit {
 
     readiness = await this.upgradeCommandService.checkReadiness().toPromise();
     console.log(JSON.stringify(readiness));
-
+    this.deploymentReadyForUpgrade = readiness;
     return readiness;
   }
 
