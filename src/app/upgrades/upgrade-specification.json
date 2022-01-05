@@ -2,41 +2,41 @@
     "CHT v4.0": [
         {
             "containerName": "upgrade-demo",
-            "imageTag": "0.7"
+            "imageTag": "0.11"
         },
         {
             "containerName": "upgrade-service",
-            "imageTag": "0.17"
+            "imageTag": "0.21"
         }
     ],
     "CHT v4.1": [
         {
             "containerName": "upgrade-demo",
-            "imageTag": "0.8"
+            "imageTag": "0.12"
         },
         {
             "containerName": "upgrade-service",
-            "imageTag": "0.18"
+            "imageTag": "0.21"
         }
     ],
     "CHT v4.2": [
         {
             "containerName": "upgrade-demo",
-            "imageTag": "0.9"
+            "imageTag": "0.13"
         },
         {
             "containerName": "upgrade-service",
-            "imageTag": "0.19"
+            "imageTag": "0.21"
         }
     ],
     "CHT v4.3": [
         {
             "containerName": "upgrade-demo",
-            "imageTag": "0.10"
+            "imageTag": "0.14"
         },
         {
             "containerName": "upgrade-service",
-            "imageTag": "0.20"
+            "imageTag": "0.21"
         }
     ]
 }
