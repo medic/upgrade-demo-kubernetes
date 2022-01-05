@@ -8,6 +8,7 @@ import completeListOfVersions from './upgrades/upgrade-specification.json';
 })
 export class UpgradeCommandService {
   private upgradeURL = 'http://localhost:5008/upgrade';
+  private readinessCheckURL = 'http://localhost:5008/server-status';
   constructor(private http: HttpClient) { 
   }
 
@@ -28,6 +29,10 @@ export class UpgradeCommandService {
   upgradeImages(versionTag: string): Observable<string> {
     const upgradeArray = this.constructUpgradeArray(versionTag);
     return this.http.post<string>(this.upgradeURL, upgradeArray);
+  }
+
+  checkReadiness(): Observable<{ready: boolean, message: string}> {
+    return this.http.get<{ready: boolean, message: string}>(this.readinessCheckURL);
   }
 
 }

@@ -11,6 +11,7 @@ import packageJSON from '../../../package.json';
 export class UpgradesComponent implements OnInit {
   currentVersion: string = packageJSON.version;
   availableVersions: string[] = [];
+  deploymentReadyForUpgrade: {ready: boolean, message: string} = {ready: false, message: 'Deployment not yet ready'};
 
   upgradeResult: string = '';
 
@@ -22,13 +23,28 @@ export class UpgradesComponent implements OnInit {
     }
   }
 
-  ngOnInit(): void {
+  async ngOnInit(): Promise<void> {
+    this.deploymentReadyForUpgrade = await this.checkReadiness();
   }
 
   upgradeVersion(versionTag: string): void {
-    this.upgradeCommandService.upgradeImages(versionTag).subscribe(result => {
-      this.upgradeResult = result; console.log(result);
-    });
+    if (!this.deploymentReadyForUpgrade.ready) {
+      alert(`Upgrade cannot be run right now. Reason: ${this.deploymentReadyForUpgrade.message}`);
+    } else {
+      this.upgradeCommandService.upgradeImages(versionTag).subscribe(result => {
+        this.upgradeResult = result;
+        console.log(result);
+      });
+    }
+  }
+
+  async checkReadiness(): Promise<{ready: boolean, message: string}> {
+    let readiness: {ready: boolean, message: string} = {ready: false, message: ''};
+
+    readiness = await this.upgradeCommandService.checkReadiness().toPromise();
+    console.log(JSON.stringify(readiness));
+
+    return readiness;
   }
 
 }
