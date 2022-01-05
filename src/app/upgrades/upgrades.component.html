@@ -256,11 +256,12 @@
     <!-- Resources -->
     <h2>Upgrades Available</h2>
     <p>Here are available upgrades:</p>
+    <p>{{updateMessage}}</p>
   
     <div class="card-container">
-      <div *ngFor="let version of availableVersions" (click) = "upgradeVersion(version.toString())" class="card" target="_blank" rel="noopener" >
+      <button *ngFor="let version of availableVersions" (click) = "upgradeVersion(version.toString())" [ngClass]="{'card' : deploymentReadyForUpgrade.ready}" target="_blank" [disabled] = "!deploymentReadyForUpgrade.ready" rel="noopener" >
         <span>Upgrade to {{ version }}</span>
-      </div>
+      </button>
     </div>
   
   

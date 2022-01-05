@@ -12,6 +12,7 @@ export class UpgradesComponent implements OnInit {
   currentVersion: string = packageJSON.version;
   availableVersions: string[] = [];
   deploymentReadyForUpgrade: {ready: boolean, message: string} = {ready: false, message: 'Deployment not yet ready'};
+  updateMessage: string = '';
 
   upgradeResult: string = '';
 
@@ -33,7 +34,8 @@ export class UpgradesComponent implements OnInit {
     } else {
       this.upgradeCommandService.upgradeImages(versionTag).subscribe(result => {
         this.upgradeResult = result;
-        console.log(result);
+        this.updateMessage = JSON.stringify(result);
+        console.log(JSON.stringify(result));
       });
     }
   }
