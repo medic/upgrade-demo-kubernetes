@@ -16,5 +16,5 @@ spec:
         app: upgrade-demo
     spec:
       containers:
-      - image: medicmobile/upgrade-demo:0.10
+      - image: medicmobile/upgrade-demo:0.30
         name: upgrade-demo

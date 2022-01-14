@@ -1,0 +1,4 @@
+{
+    "UPGRADE_URL": "https://demo-upgrade-service.dev.medicmobile.org/upgrade",
+    "READINESS_CHECK_URL": "https://demo-upgrade-service.dev.medicmobile.org/server-status"
+}

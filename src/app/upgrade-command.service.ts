@@ -3,13 +3,14 @@ import { Observable } from 'rxjs';
 import { IUpgradeMessage } from './upgrade-message';
 import { HttpClient } from '@angular/common/http';
 import completeListOfVersions from './upgrades/upgrade-specification.json';
+import upgradeConstantsJSON from './upgrades/upgrade-test-constants.json';
 @Injectable({
   providedIn: 'root'
 })
 export class UpgradeCommandService {
-  private upgradeURL = 'http://localhost:5008/upgrade';
-  private readinessCheckURL = 'http://localhost:5008/server-status';
-  constructor(private http: HttpClient) { 
+  private upgradeURL = upgradeConstantsJSON.UPGRADE_URL || 'http://localhost:5008/upgrade';
+  private readinessCheckURL = upgradeConstantsJSON.READINESS_CHECK_URL || 'http://localhost:5008/server-status';
+  constructor(private http: HttpClient) {
   }
 
   typedKeys<T>(o: T): (keyof T)[] {
